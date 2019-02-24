@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class HealthCheckController {
@@ -18,7 +19,7 @@ public class HealthCheckController {
 
 
         return ResponseEntity.ok()
-                .cacheControl(CacheControl.noCache())
+                .cacheControl(CacheControl.maxAge(1, TimeUnit.HOURS))
                 .body(healthCheckMap);
     }
 }
