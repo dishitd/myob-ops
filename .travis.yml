@@ -1,9 +1,9 @@
 language: java
-script: mvn install 
+script: mvn install
 deploy:
   provider: script
   script: "mvn test"
   skip_cleanup: true
   on:
-    branch: master
+    branch: develop
 after_success: "echo 'Finish'"
