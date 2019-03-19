@@ -1,0 +1,23 @@
+version: '1.0'
+services:
+  api1:
+      context: ./api
+      tty: true
+      
+  api2:
+      context: ./api
+      tty: true
+      
+  api3:
+      build: ./backend
+      tty: true
+      
+  loadbalancer:
+      build: ./load-balancer
+      tty: true
+      links:
+          - api1
+          - api2
+          - api3
+      ports:
+          - '8080:8080'
