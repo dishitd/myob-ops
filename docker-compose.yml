@@ -1,19 +1,19 @@
-version: '1.0'
+version: '3.7'
 services:
   api1:
-      context: ./api
+      build: ./api
       tty: true
       
   api2:
-      context: ./api
+      build: ./api
       tty: true
       
   api3:
-      build: ./backend
+      build: ./api
       tty: true
       
   loadbalancer:
-      build: ./load-balancer
+      build: ./nginx-lb
       tty: true
       links:
           - api1

@@ -1,4 +1,5 @@
 language: java
+before_script: cd api
 script: mvn install
 deploy:
   provider: script
