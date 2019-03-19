@@ -12,7 +12,7 @@ services:
       build: ./api
       tty: true
       
-  loadbalancer:
+  nginx:
       build: ./nginx-lb
       tty: true
       links:

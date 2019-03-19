@@ -3,7 +3,7 @@ before_script: cd api
 script: mvn install
 deploy:
   provider: script
-  script: "mvn test"
+  script: "mvn run"
   skip_cleanup: true
   on:
     branch: develop
