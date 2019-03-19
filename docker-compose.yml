@@ -1,23 +1,13 @@
 version: '3.7'
 services:
-  api1:
+  api:
       build: ./api
-      tty: true
       
-  api2:
-      build: ./api
-      tty: true
-      
-  api3:
-      build: ./api
-      tty: true
-      
-  nginx:
+  
+  nginx-lb:
       build: ./nginx-lb
-      tty: true
+      
       links:
-          - api1
-          - api2
-          - api3
+          - api
       ports:
           - '8080:8080'
