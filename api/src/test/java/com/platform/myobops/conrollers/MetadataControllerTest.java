@@ -30,9 +30,9 @@ public class MetadataControllerTest {
 
     @Test
     public void sendMetadata() {
-        ResponseEntity<List> responseList = metadataController.sendMetadata();
+        ResponseEntity<Map> responseList = metadataController.sendMetadata();
         assertThat(responseList.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseList.getBody().size()).isEqualTo(1);
+        assertThat(responseList.getBody().size()).isEqualTo(3);
 
     }
 }
