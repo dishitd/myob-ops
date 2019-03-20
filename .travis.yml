@@ -5,7 +5,7 @@ services:
 
 # before_install: cd api && mvn test
 script:
-  - ./build.sh #.././build.sh
+  - docker-compose build #.././build.sh
 deploy:
   provider: elasticbeanstalk
   region: "ap-southeast-2"
@@ -16,9 +16,12 @@ deploy:
   skip_cleanup: true
   on:
     branch: develop
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key:
+  access-key-id: 
+    secure: "$AWS_ACCESS_KEY"
+  secret-access-key:
     secure: "$AWS_SECRET_KEY"
+after_deploy:
+  script: docker-compose up --scale api=5 --scale nginx-lb=1 -d
 after_success: "echo 'Finish'"
 
 
