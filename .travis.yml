@@ -13,10 +13,12 @@ deploy:
   env: "Test-env"
   bucket_name: "elasticbeanstalk-ap-southeast-2-507725842651"
   bucket_path: "Test" #app name 
+  skip_cleanup: true
   on:
     branch: develop
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
 after_success: "echo 'Finish'"
+
 
