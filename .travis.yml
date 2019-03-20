@@ -5,7 +5,7 @@ services:
 
 before_install: cd api && mvn test
 script:
-  - ./build.sh
+  - .././build.sh
 deploy:
   provider: elasticbeanstalk
   region: "ap-southeast-2"
