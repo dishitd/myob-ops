@@ -2,8 +2,8 @@ language: java
 sudo: required
 services: 
   - docker
-before_script: cd api
-before_install: mvn test
+
+before_install: cd api && mvn test
 script:
   - ./build.sh
 deploy:
