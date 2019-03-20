@@ -23,7 +23,7 @@ script:
 after_success: 
   - "echo 'Finish'"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push myob-ops_api
-  - docker push myob-ops_nginx_lb
+  - docker push myobops_api
+  - docker push myobops_nginx_lb
 
 
