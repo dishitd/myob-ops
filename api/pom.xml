@@ -64,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>api</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -94,7 +95,7 @@
 				</execution>
 			</executions>
 				<configuration>
-				<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+				<dotGitDirectory>{project.basedir}.git</dotGitDirectory>
 					<verbose>true</verbose>
 					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 				</configuration>
