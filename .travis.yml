@@ -24,7 +24,7 @@ after_success:
   - "echo 'Finish'"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker tag myobops_api:latest dishitd/ops-repo:myobops_api
-  - docker push dishitd/myobops_api
+  - docker push dishitd/ops-repo:myobops_api
   - docker tag myobops_nginx-lb:latest dishitd/ops-repo:myobops_nginx_lb
-  - docker push dishitd/myobops_nginx_lb
+  - docker push dishitd/ops-repo:myobops_nginx_lb
 
