@@ -16,10 +16,8 @@ deploy:
   skip_cleanup: true
   on:
     branch: develop
-  access-key-id: 
-    secure: "$AWS_ACCESS_KEY"
-  secret-access-key:
-    secure: "$AWS_SECRET_KEY"
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret-access-key: "$AWS_SECRET_KEY"
 after_deploy:
   script: docker-compose up --scale api=5 --scale nginx-lb=1 -d
 after_success: "echo 'Finish'"
