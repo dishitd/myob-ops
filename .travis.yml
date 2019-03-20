@@ -3,7 +3,7 @@ sudo: required
 services: 
   - docker
 
-before_install: cd api && mvn test
+# before_install: cd api && mvn test
 script:
   - .././build.sh
 deploy:
@@ -17,6 +17,6 @@ deploy:
     branch: develop
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
 after_success: "echo 'Finish'"
 

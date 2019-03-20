@@ -3,7 +3,7 @@ COPY api/pom.xml /tmp/
 COPY api/src /tmp/src/
 COPY .git /tmp/.git/
 WORKDIR /tmp/
-RUN mvn package
+RUN mvn package -Dmaven.test.skip=true
  
 FROM openjdk:8-alpine
 COPY --from=BUILD_JAR /tmp/target/*.jar .
