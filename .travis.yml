@@ -22,7 +22,7 @@ script:
 #   script: docker-compose up --scale api=5 --scale nginx-lb=1 -d
 after_success: 
   - "echo 'Finish'"
-  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push myob-ops_api
   - docker push myob-ops_nginx_lb
 
