@@ -1,10 +1,22 @@
 language: java
+sudo: required
+services: 
+  - docker
 before_script: cd api
-script: mvn install
+before_install: mvn test
+script:
+  - ./build.sh
 deploy:
-  provider: script
-  script: "mvn package"
-  skip_cleanup: true
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "Test" #app name is application name in ec2 beanstalk
+  env: "Test-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-507725842651"
+  bucket_path: "Test" #app name 
   on:
     branch: develop
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
 after_success: "echo 'Finish'"
+
