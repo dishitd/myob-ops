@@ -6,18 +6,7 @@ services:
 # before_install: cd api && mvn test
 script:
   - docker-compose build #.././build.sh
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "ap-southeast-2"
-#   app: "Test" #app name is application name in ec2 beanstalk
-#   env: "Test-env"
-#   bucket_name: "elasticbeanstalk-ap-southeast-2-507725842651"
-#   bucket_path: "Test" #app name 
-#   skip_cleanup: true
-#   on:
-#     branch: develop
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret-access-key: "$AWS_SECRET_KEY"
+
 # after_deploy:
 #   script: docker-compose up --scale api=5 --scale nginx-lb=1 -d
 after_success: 
@@ -27,4 +16,18 @@ after_success:
   - docker push dishitd/ops-repo:myobops_api
   - docker tag myobops_nginx-lb:latest dishitd/ops-repo:myobops_nginx_lb
   - docker push dishitd/ops-repo:myobops_nginx_lb
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "ops-stack" #app name is application name in ec2 beanstalk
+  env: "OpsStack-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-507725842651"
+  bucket_path: "ops-stack" #app name 
+  skip_cleanup: true
+  on:
+    branch: develop
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
 

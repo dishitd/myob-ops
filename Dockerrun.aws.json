@@ -1,0 +1,25 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "api",
+        "image": "dishitd/ops-repo:myobops_api",
+        "hostname": "api",
+        "essential": false
+        
+      },
+      {
+        "name": "nginx-lb",
+        "image": "dishitd/ops-repo:myobops_nginx_lb",
+        "hostname": "nginx-lb",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["api"]
+      }
+    ]
+}
