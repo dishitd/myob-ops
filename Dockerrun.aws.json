@@ -6,7 +6,7 @@
         "image": "dishitd/ops-repo:myobops_api",
         "hostname": "api",
         "essential": false,
-        "memory":128
+        "memory":256
         
       },
       {
