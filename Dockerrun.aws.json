@@ -6,7 +6,13 @@
         "image": "dishitd/ops-repo:myobops_api",
         "hostname": "api",
         "essential": false,
-        "memory":256
+        "memory":256,
+        "portMappings": [
+          {
+            "hostPort": 9000,
+            "containerPort": 9000
+          }
+        ]
         
       },
       {
