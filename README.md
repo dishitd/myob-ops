@@ -5,8 +5,10 @@
 This project was created to demonstrate one of the ways by which a simple Java application built using Maven is containerized using Docker and deployed to AWS instances using Travis-CI
 
 ## Solution Design
+![Solution Design](https://github.com/dishitd/myob-ops/raw/develop/figures/Solution%20Design.png)
 
 ## Deployment Steps Pipeline
+![Deployment Pipeline](https://github.com/dishitd/myob-ops/raw/develop/figures/Deployment%20Pipeline.png)
 
 ## APIs Deployed
 * Application Primary URL - http://\<elb url\>/api/getresult
