@@ -10,28 +10,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
+import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @Log4j2
-public class RootEndPointControllerTest {
+public class MetadataControllerTest {
 
     @Autowired
-    RootEndPointController rootEndPointController;
+    MetadataController metadataController;
 
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
-    public void getResult() {
+    public void sendMetadata() {
+        ResponseEntity<Map> responseList = metadataController.sendMetadata();
+        assertThat(responseList.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseList.getBody().size()).isEqualTo(3);
 
-        ResponseEntity<?> responseData = rootEndPointController.getResult();
-        assertThat(responseData.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-
-        assertThat(responseData.getBody().toString().contains("API Works!")).isTrue();
     }
 }

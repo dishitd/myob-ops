@@ -1,0 +1,33 @@
+language: java
+sudo: required
+services: 
+  - docker
+
+before_install: cd api && mvn test
+script:
+  - docker-compose build #.././build.sh
+
+# after_deploy:
+#   script: docker-compose up --scale api=5 --scale nginx-lb=1 -d
+after_success: 
+  - "echo 'Finish'"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker tag myobops_api:latest "$DOCKER_ID"/ops-repo:myobops_api
+  - docker push "$DOCKER_ID"/ops-repo:myobops_api
+  - docker tag myobops_nginx-lb:latest "$DOCKER_ID"/ops-repo:myobops_nginx_lb
+  - docker push "$DOCKER_ID"/ops-repo:myobops_nginx_lb
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "ops-stack" #app name is application name in ec2 beanstalk
+  env: "OpsStack-env-1"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-507725842651"
+  bucket_path: "ops-stack" #app name 
+  skip_cleanup: true
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
+

@@ -31,19 +31,23 @@ public class MetadataController {
     @Value("${application.description}")
     private String applicationDescription;
 
+    @Value("${git.commit.id}")
+    private String lastGitCommit;
+
 
     @GetMapping("/api/metadata")
-    public ResponseEntity<List> sendMetadata() {
-        List<Map<String, String>> metadataList = new ArrayList();
+    public ResponseEntity<Map> sendMetadata() {
+//        List<Map<String, String>> metadataList = new ArrayList();
         Map<String, String> metadataMap = new HashMap<>();
 
 
         metadataMap.put("version", applicationVersion);
         metadataMap.put("description", applicationDescription);
+        metadataMap.put("lastCommit", lastGitCommit);
         // TODO: Get latest commit
 
-        metadataList.add(metadataMap);
+//        metadataList.add(metadataMap);
         return ResponseEntity.ok().cacheControl(CacheControl.noCache())
-                .body(metadataList);
+                .body(metadataMap);
     }
 }

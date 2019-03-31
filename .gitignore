@@ -1,4 +1,5 @@
-/target/
+# Removed target directory
+target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
