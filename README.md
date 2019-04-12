@@ -45,15 +45,17 @@ This project was created to demonstrate one of the ways by which a simple Java a
     2. AWS_SECRET_KEY : Update the value of AWS secret key 
     3. DOCKER_ID : Provide docker id based on account on dockerhub
     4. DOCKER_PASSWORD : Provide docker password 
+
+4. Update image name to own repository in Dockerrun.aws.json file
     
-4. Update travis.yml file with below changes
+5. Update travis.yml file with below changes
     1. Update region name if beanstalk is deployed in region other than ap-southeast-2
     2. Update app and env value with elasticbeanstalk application and environment
     3. Update the bucket-name parameter with the S3 bucket name created for beanstalk
     4. Bucket path is same as application name
        
-5. Commit and push the changes to master branch which triggers auto-deployment to AWS 
-6. The application will be available at the elasticbeanstalk environment url
+6. Commit and push the changes to master branch which triggers auto-deployment to AWS 
+7ß. The application will be available at the elasticbeanstalk environment url
 
 
 ## Limitations
